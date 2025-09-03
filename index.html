@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Clock with JS</h1>
+    <div class="container">
+      <div id="clock-div" class="clock">
+        <div id="clock-numbers-div" class="clock-numbers-div">
+          <div class="clock-numbers number-12">12</div>
+          <div class="clock-numbers number-1">1</div>
+          <div class="clock-numbers number-2">2</div>
+          <div class="clock-numbers number-3">3</div>
+          <div class="clock-numbers number-4">4</div>
+          <div class="clock-numbers number-5">5</div>
+          <div class="clock-numbers number-6">6</div>
+          <div class="clock-numbers number-7">7</div>
+          <div class="clock-numbers number-8">8</div>
+          <div class="clock-numbers number-9">9</div>
+          <div class="clock-numbers number-10">10</div>
+          <div class="clock-numbers number-11">11</div>
+          <div class="pointers">
+        
+        <div class="minute-pointer-div" id="minute-pointer"></div>
+        <div class="hour-pointer-div" id="hour-pointer"></div>
+        <div class="second-pointer-div" id="second-pointer"></div>
+        <div class="fix-pointer-div" id="fix-pointer"></div>
+       </div>
+        
+      </div>
+    </div>
+  </body>
+  <script>
+
+
+    const minute_pointer = document.querySelector('.minute-pointer-div');
+    const second_pointer = document.getElementById("second-pointer");
+    const hour_pointer = document.getElementById("hour-pointer");
+
+    const getTime  = () => {
+        const date = new Date();
+        return {
+            hour: date.getHours(),
+            seconds: date.getSeconds(),
+            minute: date.getMinutes()
+        }
+    }
+
+
+    setInterval(() => {
+      const  {seconds, hour, minute}  = getTime();
+      second_pointer.style.transform = `translate(0,-50%) rotate(${seconds * 6}deg)`;
+      minute_pointer.style.transform = `translate(0,-50%) rotate(${minute * 6}deg)`;
+      hour_pointer.style.transform = `translate(0,-50%) rotate(${hour * 30}deg)`;
+    }, 1000)
+
+  </script>
+  <style>
+    body {
+      background-color: rgb(68, 91, 139);
+      display: flex;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      flex-direction: column;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+    }
+
+    .clock {
+      background-color: rgb(255, 255, 255);
+      width: 40vh;
+      height: 40vh;
+      display: flex;
+      border: 10px solid rgb(0, 0, 0);
+      border-radius: 50%;
+      color: black;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .clock-numbers-div {
+      border-radius: 50%;
+      display: flex;
+      border: 2px solid rgb(0, 0, 0);
+      width: 39vh;
+      height: 39vh;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clock-numbers{
+      width: 37vh;
+      height: 37vh;
+      color: black;
+      text-align: center;
+      position: absolute;
+    }
+
+    .number-12{
+        transform: rotate(00deg);
+    }
+    .number-1{
+        transform: rotate(30deg);
+    }
+    .number-2{
+        transform: rotate(60deg);
+    }
+    .number-3{
+        transform: rotate(90deg);
+    }
+    .number-4{
+        transform: rotate(120deg);
+    }
+    .number-5{
+        transform: rotate(150deg);
+    }
+    .number-6{
+        transform: rotate(180deg);
+    }
+    .number-7{
+        transform: rotate(210deg);
+    }
+    .number-8{
+        transform: rotate(240deg);
+    }
+    .number-9{
+        transform: rotate(270deg);
+    }
+    .number-10{
+ 
+        transform: rotate(300deg);
+    }
+    .number-11{
+        transform: rotate(330deg);
+    }
+
+    .pointers{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .second-pointer-div{
+       
+        height: 15vh;
+        position: absolute;
+        transform-origin: bottom;
+        width: 0.4vh;
+        border-radius: 10px;
+        transform: translate(0,-50%) rotate(00deg);
+        background-color: rgb(232, 8, 8);
+        
+    }
+
+
+   .hour-pointer-div{
+        height: 15vh;
+        position: absolute;
+        transform-origin: bottom;
+        width: 0.7vh;
+        border-radius: 10px;
+        transform: translate(0,-50%) rotate(30deg);
+        background-color: rgb(0, 0, 0);
+    }
+
+    
+   .minute-pointer-div{
+        height: 15vh;
+        position: absolute;
+        transform-origin: bottom;
+        width: 0.5vh;
+        border-radius: 10px;
+        transform: translate(0,-50%) rotate(018deg);
+        background-color: rgb(0, 0, 0);
+    }
+
+    .fix-pointer-div{
+        position: absolute;
+        transform-origin: bottom;
+        width: 2vh;
+        height: 2vh;
+        border-radius: 10px;
+        transform: translate(0,-20%) rotate(00deg);
+        background-color: rgb(255, 0, 0);
+    }
+  </style>
+</html>
